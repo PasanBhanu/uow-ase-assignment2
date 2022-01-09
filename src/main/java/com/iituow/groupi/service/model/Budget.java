@@ -1,4 +1,4 @@
-package com.iituow.groupi.model;
+package com.iituow.groupi.service.model;
 
 import lombok.Data;
 

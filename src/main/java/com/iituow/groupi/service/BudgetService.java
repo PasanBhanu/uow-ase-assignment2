@@ -1,9 +1,7 @@
 package com.iituow.groupi.service;
 
 import com.iituow.groupi.service.model.Budget;
-import org.springframework.stereotype.Service;
 
-@Service
 public interface BudgetService {
     Budget getBudget(Integer id);
 

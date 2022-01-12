@@ -2,7 +2,9 @@ package com.iituow.groupi.service.impl;
 
 import com.iituow.groupi.service.model.Budget;
 import com.iituow.groupi.service.BudgetService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BudgetServiceImpl implements BudgetService {
     @Override
     public Budget getBudget(Integer id) {

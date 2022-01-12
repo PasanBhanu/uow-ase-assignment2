@@ -1,20 +1,20 @@
 package com.iituow.groupi.service;
 
-import com.iituow.groupi.service.model.Transaction;
-import com.iituow.groupi.util.TransactionType;
+import com.iituow.groupi.rest.request.TransactionRequest;
+import com.iituow.groupi.rest.response.TransactionResponse;
+import com.iituow.groupi.rest.response.TransactionsResponse;
+import com.iituow.groupi.rest.response.base.BaseResponse;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 
 @Service
 public interface TransactionService {
-    ArrayList<Transaction> getAllTransactions();
+    TransactionsResponse getAllTransactions();
 
-    Transaction getTransaction(Integer id);
+    TransactionResponse getTransaction(Integer id);
 
-    Transaction createTransaction(Integer categoryId, TransactionType transactionType, String description, Double amount);
+    BaseResponse createTransaction(TransactionRequest request);
 
-    Transaction updateTransaction(Integer id, Integer categoryId, TransactionType transactionType, String description, Double amount);
+    BaseResponse updateTransaction(TransactionRequest request, Integer id);
 
-    void deleteTransaction(Integer id);
+    BaseResponse deleteTransaction(Integer id);
 }

@@ -48,6 +48,8 @@ public class TransactionServiceImpl implements TransactionService {
             response.setStatus(HttpStatus.OK.value());
             response.setMessage("Transaction retrieved successfully");
             response.setTransaction(transactionOpt.map(Transaction::new).get());
+
+            return response;
         }
 
         throw new DatabaseValidationException(401, HttpStatus.NOT_FOUND, "Transaction not found!");
@@ -80,7 +82,7 @@ public class TransactionServiceImpl implements TransactionService {
 
             BaseResponse response = new BaseResponse();
             response.setStatus(HttpStatus.OK.value());
-            response.setMessage("Transaction created successfully");
+            response.setMessage("Transaction update successfully");
             return response;
         }
 

@@ -10,12 +10,14 @@ import com.iituow.groupi.rest.response.base.BaseResponse;
 import com.iituow.groupi.service.TransactionService;
 import com.iituow.groupi.service.model.Transaction;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Service
 public class TransactionServiceImpl implements TransactionService {
     private final TransactionRepository transactionRepository;
 
@@ -90,6 +92,9 @@ public class TransactionServiceImpl implements TransactionService {
         Optional<DaoTransaction> transactionOpt = this.transactionRepository.findById(id);
         transactionOpt.ifPresent(this.transactionRepository::delete);
 
-        throw new DatabaseValidationException(401, HttpStatus.NOT_FOUND, "Transaction not found!");
+        BaseResponse response = new BaseResponse();
+        response.setStatus(HttpStatus.OK.value());
+        response.setMessage("Transaction deleted successfully");
+        return response;
     }
 }

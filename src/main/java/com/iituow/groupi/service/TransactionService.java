@@ -4,9 +4,7 @@ import com.iituow.groupi.rest.request.TransactionRequest;
 import com.iituow.groupi.rest.response.TransactionResponse;
 import com.iituow.groupi.rest.response.TransactionsResponse;
 import com.iituow.groupi.rest.response.base.BaseResponse;
-import org.springframework.stereotype.Service;
 
-@Service
 public interface TransactionService {
     TransactionsResponse getAllTransactions();
 

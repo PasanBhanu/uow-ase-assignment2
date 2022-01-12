@@ -1,15 +1,18 @@
 package com.iituow.groupi.service;
 
-import com.iituow.groupi.service.model.Category;
-import org.springframework.stereotype.Service;
+import com.iituow.groupi.rest.request.CategoryRequest;
+import com.iituow.groupi.rest.response.CategoriesResponse;
+import com.iituow.groupi.rest.response.CategoryResponse;
+import com.iituow.groupi.rest.response.base.BaseResponse;
 
-@Service
 public interface CategoryService {
-    Category getCategory(Integer id);
+    CategoriesResponse getAllCategories();
 
-    Category createCategory(String title);
+    CategoryResponse getCategory(Integer id);
 
-    Category updateCategory(Integer id, String title);
+    BaseResponse createCategory(CategoryRequest payload);
 
-    void deleteCategory(Integer id);
+    BaseResponse updateCategory(CategoryRequest payload, Integer id);
+
+    BaseResponse deleteCategory(Integer id);
 }

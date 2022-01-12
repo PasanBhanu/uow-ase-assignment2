@@ -203,13 +203,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/transactions/all",
+							"raw": "{{url}}/transactions/get/1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"transactions",
-								"all"
+								"get",
+								"1"
 							]
 						}
 					},

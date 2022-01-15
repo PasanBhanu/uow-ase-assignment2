@@ -16,4 +16,8 @@ public class DaoCategory {
     @Basic
     @Column(name = "TITLE", length = 255)
     private String title;
+
+    @Basic
+    @Column(name = "BUDGET")
+    private Double budget = null;
 }

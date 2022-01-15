@@ -1,13 +1,8 @@
 package com.iituow.groupi.service;
 
-import com.iituow.groupi.service.model.Budget;
+import com.iituow.groupi.rest.request.BudgetRequest;
+import com.iituow.groupi.rest.response.base.BaseResponse;
 
 public interface BudgetService {
-    Budget getBudget(Integer id);
-
-    Budget createBudget(Integer categoryId, Double amount);
-
-    Budget updateBudget(Integer id, Double amount);
-
-    void deleteBudget(Integer id);
+    BaseResponse updateBudget(BudgetRequest payload);
 }

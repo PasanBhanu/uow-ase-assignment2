@@ -7,9 +7,11 @@ import lombok.Data;
 public class Category {
     private Integer id;
     private String title;
+    private Double budget;
 
     public Category (DaoCategory dao){
         this.id = dao.getId();
         this.title = dao.getTitle();
+        this.budget = dao.getBudget();
     }
 }

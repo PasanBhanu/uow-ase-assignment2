@@ -236,6 +236,38 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Budgets",
+			"item": [
+				{
+					"name": "Update Budget",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryId\" : 1,\r\n    \"budget\" : 1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/budget/update",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"budget",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [

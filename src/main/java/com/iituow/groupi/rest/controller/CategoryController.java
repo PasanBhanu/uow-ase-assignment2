@@ -44,9 +44,4 @@ public class CategoryController {
         return ResponseEntity.ok(this.categoryService.deleteCategory(id));
     }
 
-    @GetMapping("/index")
-    public String showUserList(Model model) {
-       // model.addAttribute("users", 'Dilshan');
-        return "index";
-    }
 }

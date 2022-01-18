@@ -16,8 +16,13 @@ public class BudgetController {
         this.budgetService = budgetService;
     }
 
+    @GetMapping(path = "/get", produces = "application/json")
+    public ResponseEntity<BudgetResponse> getOverview() {
+        return ResponseEntity.ok(this.budgetService.getOverview());
+    }
+
     @GetMapping(path = "/get/{id}", produces = "application/json")
-    public ResponseEntity<BudgetResponse> getTransaction(@PathVariable Integer id) {
+    public ResponseEntity<BudgetResponse> getBudget(@PathVariable Integer id) {
         return ResponseEntity.ok(this.budgetService.getBudget(id));
     }
 

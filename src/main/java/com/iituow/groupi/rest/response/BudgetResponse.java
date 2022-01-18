@@ -3,9 +3,11 @@ package com.iituow.groupi.rest.response;
 import com.iituow.groupi.rest.response.base.BaseResponse;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @Data
 public class BudgetResponse extends BaseResponse {
-    private Double budget;
-    private Double totalExpense;
-    private Double totalIncome;
+    private BigDecimal budget;
+    private BigDecimal totalExpense;
+    private BigDecimal totalIncome;
 }

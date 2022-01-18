@@ -11,6 +11,7 @@ import com.iituow.groupi.service.BudgetService;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 @Service
@@ -24,23 +25,39 @@ public class BudgetServiceImpl implements BudgetService {
     }
 
     @Override
+    public BudgetResponse getOverview() {
+        BigDecimal totalIncome = this.transactionRepository.getTotalIncome();
+        BigDecimal totalExpense = this.transactionRepository.getTotalExpense();
+        BigDecimal totalBudget = this.categoryRepository.getTotalBudget();
+
+        BudgetResponse response = new BudgetResponse();
+        response.setBudget(totalBudget != null ? totalBudget : new BigDecimal(0));
+        response.setTotalIncome(totalIncome != null ? totalIncome : new BigDecimal(0));
+        response.setTotalExpense(totalExpense != null ? totalExpense : new BigDecimal(0));
+        response.setStatus(HttpStatus.OK.value());
+        response.setMessage("Budget details successfully retrieved");
+
+        return response;
+    }
+
+    @Override
     public BudgetResponse getBudget(Integer id) {
         Optional<DaoCategory> categoryOpt = this.categoryRepository.findById(id);
         if (categoryOpt.isPresent()) {
             // Get Total Income
-            String income = this.transactionRepository.getTotalIncomeByCategoryId(id);
+            BigDecimal income = this.transactionRepository.getTotalIncomeByCategoryId(id);
 
             // Get Total Expense
-            String expense = this.transactionRepository.getTotalExpenseByCategoryId(id);
+            BigDecimal expense = this.transactionRepository.getTotalExpenseByCategoryId(id);
 
             BudgetResponse response = new BudgetResponse();
-            response.setBudget(categoryOpt.get().getBudget());
-            response.setTotalIncome(Double.parseDouble(income));
-            response.setTotalExpense(Double.parseDouble("0"));
+            response.setBudget(new BigDecimal(categoryOpt.get().getBudget()));
+            response.setTotalIncome(income != null ? income : new BigDecimal(0));
+            response.setTotalExpense(expense != null ? expense : new BigDecimal(0));
             response.setStatus(HttpStatus.OK.value());
             response.setMessage("Budget details successfully retrieved");
 
-            return null;
+            return response;
         }
 
         throw new DatabaseValidationException(401, HttpStatus.NOT_FOUND, "Category not found!");

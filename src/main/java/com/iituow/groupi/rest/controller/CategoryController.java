@@ -7,6 +7,7 @@ import com.iituow.groupi.rest.response.base.BaseResponse;
 import com.iituow.groupi.service.CategoryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -19,8 +20,10 @@ public class CategoryController {
     }
 
     @GetMapping(path = "/all", produces = "application/json")
-    public ResponseEntity<CategoriesResponse> getAllCategories() {
-        return ResponseEntity.ok(this.categoryService.getAllCategories());
+    public String getAllCategories(Model model) {
+        CategoriesResponse categoriesResponse = this.categoryService.getAllCategories();
+        model.addAttribute("categoriesResponse", categoriesResponse);
+        return "categories";
     }
 
     @GetMapping(path = "/get/{id}", produces = "application/json")
@@ -28,9 +31,10 @@ public class CategoryController {
         return ResponseEntity.ok(this.categoryService.getCategory(id));
     }
 
-    @PostMapping(path = "/create", produces = "application/json")
-    public ResponseEntity<BaseResponse> createTransaction(@RequestBody CategoryRequest payload) {
-        return ResponseEntity.ok(this.categoryService.createCategory(payload));
+    @PostMapping(path = "/create")
+    public String createTransaction(@ModelAttribute CategoryRequest payload, Model model) {
+        this.categoryService.createCategory(payload);
+        return "redirect:/categories/all";
     }
 
     @PostMapping(path = "/update/{id}", produces = "application/json")
@@ -38,9 +42,10 @@ public class CategoryController {
         return ResponseEntity.ok(this.categoryService.updateCategory(payload, id));
     }
 
-    @PostMapping(path = "/delete/{id}", produces = "application/json")
-    public ResponseEntity<BaseResponse> deleteTransaction(@PathVariable Integer id) {
-        return ResponseEntity.ok(this.categoryService.deleteCategory(id));
+    @GetMapping(path = "/delete/{id}", produces = "application/json")
+    public String deleteTransaction(@PathVariable Integer id, Model model) {
+        this.categoryService.deleteCategory(id);
+        return "redirect:/categories/all";
     }
 
 }

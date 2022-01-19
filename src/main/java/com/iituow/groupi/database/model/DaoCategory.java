@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "CATEGORIES")
 public class DaoCategory {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Integer id;
 

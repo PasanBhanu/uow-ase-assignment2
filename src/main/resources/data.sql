@@ -1,3 +1,2 @@
-INSERT INTO CATEGORIES(ID,TITLE) values (1,'Education');
-INSERT INTO CATEGORIES(ID,TITLE) values (2,'Food');
-INSERT INTO CATEGORIES(ID,TITLE) values (3,'Travel');
+DELETE FROM CATEGORIES;
+INSERT INTO CATEGORIES(TITLE)values ('Education'),('Food'),('Travel');

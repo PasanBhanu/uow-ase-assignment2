@@ -6,9 +6,10 @@ import com.iituow.groupi.rest.response.TransactionsResponse;
 import com.iituow.groupi.rest.response.base.BaseResponse;
 import com.iituow.groupi.service.TransactionService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 @RequestMapping(path = "/transactions")
 public class TransactionController {
 

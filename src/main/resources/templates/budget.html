@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div align="center">
+    <h1>Budget Managment</h1>
+<form action="#" th:action="@{/budget/update}" th:object="${addbudget}" method="post">
+    <input type="hidden" th:field="*{id}">
+
+    <input type="text" th:field="*{title}" disabled>
+
+    <input type="text" th:field="*{budget}" placeholder="Add Budget Amount">
+
+    <button type="submit" > Add Budget</button>
+</form>
+</div>
+
+</body>
+</html>

@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class BudgetRequest {
-    private Integer categoryId;
+    private Integer Id;
     private Double budget;
 }

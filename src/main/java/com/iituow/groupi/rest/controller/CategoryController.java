@@ -22,7 +22,7 @@ public class CategoryController {
     @GetMapping(path = "/all", produces = "application/json")
     public String getAllCategories(Model model) {
         CategoriesResponse categoriesResponse = this.categoryService.getAllCategories();
-        model.addAttribute("categoriesResponse", categoriesResponse);
+        model.addAttribute("categoriesResponse", categoriesResponse.getCategories());
         return "categories";
     }
 
@@ -32,7 +32,7 @@ public class CategoryController {
     }
 
     @PostMapping(path = "/create")
-    public String createTransaction(@ModelAttribute CategoryRequest payload, Model model) {
+    public String createTransaction(@ModelAttribute("foo") CategoryRequest payload, Model model) {
         this.categoryService.createCategory(payload);
         return "redirect:/categories/all";
     }
@@ -46,6 +46,20 @@ public class CategoryController {
     public String deleteTransaction(@PathVariable Integer id, Model model) {
         this.categoryService.deleteCategory(id);
         return "redirect:/categories/all";
+    }
+
+    @GetMapping("/showBudget")
+    public String showBudget(Model model) {
+        CategoriesResponse categoriesResponse = this.categoryService.getAllCategories();
+        model.addAttribute("categoriesResponse", categoriesResponse);
+        return "budget";
+    }
+
+    @GetMapping(path = "/showFormForAdd/{id}", produces = "application/json")
+    public String showFormForAdd(@PathVariable Integer id, Model model) {
+        CategoryResponse categoryResponse = this.categoryService.getCategory(id);
+        model.addAttribute("addbudget", categoryResponse.getCategory());
+        return "budget";
     }
 
 }

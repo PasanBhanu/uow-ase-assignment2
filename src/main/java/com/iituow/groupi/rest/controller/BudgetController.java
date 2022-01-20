@@ -5,9 +5,11 @@ import com.iituow.groupi.rest.response.BudgetResponse;
 import com.iituow.groupi.rest.response.base.BaseResponse;
 import com.iituow.groupi.service.BudgetService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 @RequestMapping(path = "/budget")
 public class BudgetController {
     private final BudgetService budgetService;
@@ -27,7 +29,10 @@ public class BudgetController {
     }
 
     @PostMapping(path = "/update", produces = "application/json")
-    public ResponseEntity<BaseResponse> updateBudget(@RequestBody BudgetRequest payload) {
-        return ResponseEntity.ok(this.budgetService.updateBudget(payload));
+    public String updateBudget(@ModelAttribute("addbudget") BudgetRequest payload) {
+        this.budgetService.updateBudget(payload);
+        return "redirect:/categories/all";
     }
+
+
 }

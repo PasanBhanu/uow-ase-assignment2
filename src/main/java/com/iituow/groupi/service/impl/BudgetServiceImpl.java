@@ -65,7 +65,7 @@ public class BudgetServiceImpl implements BudgetService {
 
     @Override
     public BaseResponse updateBudget(BudgetRequest payload) {
-        Optional<DaoCategory> categoryOpt = this.categoryRepository.findById(payload.getCategoryId());
+        Optional<DaoCategory> categoryOpt = this.categoryRepository.findById(payload.getId());
         if (categoryOpt.isPresent()) {
             DaoCategory category = categoryOpt.get();
             category.setBudget(payload.getBudget());

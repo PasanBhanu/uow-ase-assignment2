@@ -9,7 +9,8 @@
 <h1 th:text="'Hi, ' + ${welcome}"></h1>
 <p>This is Working</p>
 <button type="button" class="btn btn-primary" th:onclick="window.location.href = '/categories/all'">Next</button>
-<a th:href="@{/showNewTransactionForm}"> Add Transaction</a>
+<a th:href="@{/transactions/all}"> Transactions</a>
+<a th:href="@{/budget/get}"> Progress</a>
 
 
 

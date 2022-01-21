@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div align="center">
+    <span th:if="${id == null}">
+    <h1>Create Transaction</h1>
+
+    <form action="#" th:action="@{/transactions/create}" th:object="${transaction}" method="post">
+
+        <input type="text" th:field="*{description}" placeholder="Description here">
+        <input type="text" th:field="*{amount}" placeholder="Amount Here">
+        <select th:field="*{type}">
+            <option th:value="'Income'" th:text="Income"></option>
+            <option th:value="'Expense'" th:text="Expense"></option>
+        </select>
+        <select th:field="*{categoryId}">
+            <option th:each="category: ${categoriesResponse}" th:value="${category.id}" th:text="${category.title}">
+            </option>
+        </select>
+
+        <button type="submit" > Add Transaction</button>
+    </form>
+    </span>
+
+    <span th:if="${id != null}">
+    <h1>Update Transaction</h1>
+
+    <form action="#" th:action="@{/transactions/update/{id}(id=${id})}" th:object="${transaction}" method="post">
+
+        <input type="text" th:field="*{description}" placeholder="Description here">
+        <input type="text" th:field="*{amount}" placeholder="Amount Here">
+        <select th:field="*{type}">
+            <option th:value="'Income'" th:text="Income"></option>
+            <option th:value="'Expense'" th:text="Expense"></option>
+        </select>
+        <select th:field="*{categoryId}">
+            <option th:each="category: ${categoriesResponse}" th:value="${category.id}" th:text="${category.title}">
+            </option>
+        </select>
+
+        <button type="submit" > Add Transaction</button>
+    </form>
+    </span>
+</div>
+
+</body>
+</html>

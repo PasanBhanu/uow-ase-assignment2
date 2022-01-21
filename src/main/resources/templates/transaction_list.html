@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:href="@{/categories/showNewTransactionForm}"> Add Transaction</a>
+<div class="container my-2">
+    <h2>Transaction List</h2>
+    <span th:if="${transactionResponse.isEmpty()}"><h2>No Transaction Yet !</h2></span>
+    <span th:if="${!transactionResponse.isEmpty()}">
+    <table border="1">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>TYPE</th>
+            <th>category</th>
+            <th>description</th>
+            <th>amount</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="transaction : ${transactionResponse}">
+            <td th:text="${transaction.id}"></td>
+            <td th:text="${transaction.type}"></td>
+            <td th:text="${transaction.categoryId}"></td>
+            <td th:text="${transaction.description}"></td>
+            <td th:text="${transaction.amount}"></td>
+            <!--                <td><a th:href="@{/categories/update/{id}(id=${category.id})}">Edit</a></td>-->
+
+<!--            <td th:if="${category.budget == null}"><a th:href="@{/categories/showFormForAdd/{id}(id=${category.id})}">Add Budget</a></td>-->
+            <td><a th:href="@{/transactions/showUpdateTransactionForm/{id}(id=${transaction.id})}">Update Budget</a></td>
+            <td><a th:href="@{/transactions/delete/{id}(id=${transaction.id})}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+        </span>
+    <!--    <p><a href="/signup">Add a new user</a></p>-->
+</div>
+
+</body>
+</html>

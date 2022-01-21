@@ -18,12 +18,12 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/showNewTransactionForm")
-    public String showNewTransactionForm(Model model) {
-        TransactionRequest transaction = new TransactionRequest();
-        model.addAttribute("transaction", transaction);
-        return "income";
-    }
+//    @GetMapping("/showTransactionList")
+//    public String showNewTransactionForm(Model model) {
+//        TransactionRequest transaction = new TransactionRequest();
+//        model.addAttribute("transaction", transaction);
+//        return "transaction_list";
+//    }
 
 
 }

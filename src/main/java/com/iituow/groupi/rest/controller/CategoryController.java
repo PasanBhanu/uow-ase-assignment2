@@ -1,6 +1,7 @@
 package com.iituow.groupi.rest.controller;
 
 import com.iituow.groupi.rest.request.CategoryRequest;
+import com.iituow.groupi.rest.request.TransactionRequest;
 import com.iituow.groupi.rest.response.CategoriesResponse;
 import com.iituow.groupi.rest.response.CategoryResponse;
 import com.iituow.groupi.rest.response.base.BaseResponse;
@@ -60,6 +61,15 @@ public class CategoryController {
         CategoryResponse categoryResponse = this.categoryService.getCategory(id);
         model.addAttribute("addbudget", categoryResponse.getCategory());
         return "budget";
+    }
+
+    @GetMapping("/showNewTransactionForm")
+    public String showNewTransactionForm(Model model) {
+        TransactionRequest transaction = new TransactionRequest();
+        CategoriesResponse categoriesResponse = this.categoryService.getAllCategories();
+        model.addAttribute("categoriesResponse", categoriesResponse.getCategories());
+        model.addAttribute("transaction", transaction);
+        return "add_transaction";
     }
 
 }

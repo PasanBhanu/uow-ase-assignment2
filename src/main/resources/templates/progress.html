@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div align="center">
+    <h1>Progress Track</h1>
+    <h4>OverView</h4>
+    <div>
+        <label>Budget</label>
+        <p th:text="${allProgress.budget}"></p>
+
+        <label>Total Expense</label>
+        <p th:text="${allProgress.totalExpense}"></p>
+
+        <label>Total Income</label>
+        <p th:text="${allProgress.totalIncome}"></p>
+    </div>
+
+    <div>
+        <form action="#" th:action="@{/budget/get/{id}(id=${ss})}" method="get">
+        <select th:value="*{ss}">
+            <option th:each="category: ${categoriesResponse}" th:value="${category.id}" th:text="${category.title}">
+            </option>
+        </select>
+            <button type="submit" > Get Data</button>
+        </form>
+    </div>
+
+<!--    <span th:if="${catProgress != null}">-->
+<!--    <h4>Category View</h4>-->
+<!--    <div>-->
+<!--        <label>Budget</label>-->
+<!--        <p th:text="${catProgress.budget}"></p>-->
+
+<!--        <label>Total Expense</label>-->
+<!--        <p th:text="${catProgress.totalExpense}"></p>-->
+
+<!--        <label>Total Income</label>-->
+<!--        <p th:text="${catProgress.totalIncome}"></p>-->
+<!--    </div>-->
+<!--        </span>-->
+
+
+</div>
+
+</body>
+</html>

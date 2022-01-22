@@ -28,4 +28,8 @@ public class DaoTransaction {
     @Basic
     @Column(name = "AMOUNT")
     private Double amount;
+
+    @ManyToOne
+    @JoinColumn(name = "CATEGORY_ID", referencedColumnName = "ID", insertable = false, updatable = false)
+    private DaoCategory category;
 }

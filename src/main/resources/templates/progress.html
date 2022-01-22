@@ -13,9 +13,9 @@
                 url: "/budget/get/"+clientData,
                 success: function(response){
                     console.log(response);
-                    $(".result").html("<label>Budget</label><p> "+response.budget+"</p>"+
-                        "<label>Total Expense</label><p> "+response.totalExpense+"</p>"+
-                        "<label>Total Income</label><p> "+response.totalIncome+"</p>");
+                    $(".result").html("<div class=\"col-sm-4\"><label>Budget</label><p> "+response.budget+"</p></div>"+
+                        "<div class=\"col-sm-4\"><label>Total Expense</label><p> "+response.totalExpense+"</p></div>"+
+                        "<div class=\"col-sm-4\"><label>Total Income</label><p> "+response.totalIncome+"</p></div>");
                 },
                 error: function(error){
                     console.log(response);
@@ -24,30 +24,49 @@
         });
         });
     </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
-<div align="center">
+<div align="center" class="container">
     <h1>Progress Track</h1>
-    <h4>OverView</h4>
-    <div>
-        <label>Budget</label>
-        <p th:text="${allProgress.budget}"></p>
 
-        <label>Total Expense</label>
-        <p th:text="${allProgress.totalExpense}"></p>
+    <a th:href="@{/}" class="btn btn-primary col-2">Home</a><br><br>
+    <h4>Over All View</h4>
+    <div class="row">
+        <div class="col-sm-4">
+            <label>Budget</label>
+            <p th:text="${allProgress.budget}"></p>
+        </div>
+        <div class="col-sm-4">
+            <label>Total Expense</label>
+            <p th:text="${allProgress.totalExpense}"></p>
+        </div>
+        <div class="col-sm-4">
+            <label>Total Income</label>
+            <p th:text="${allProgress.totalIncome}"></p>
+        </div>
 
-        <label>Total Income</label>
-        <p th:text="${allProgress.totalIncome}"></p>
-    </div>
+    </div><br><br>
+    <div class="row">
+        <div class="col-md-3"></div>
 
-    <div>
-            <select id="myId">
+        <div class="col-md-6">
+            <select id="myId" class="form-control mb-4 col-4">
                 <option th:each="category: ${categoriesResponse}" th:value="${category.id}" th:text="${category.title}">
                 </option>
             </select>
+        </div>
+        <div class="col-md-3"></div>
     </div>
 
-    <div class="result"></div>
+    <br><br>
+
+    <div class="result">
+        <div class="row">
+
+        </div>
+
+    </div>
 
 
 </div>

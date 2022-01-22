@@ -9,53 +9,73 @@
 <body>
 
 <div class="container">
-    <h2>Categories</h2>
 
+    <br><br>
     <a th:href="@{/}" class="btn btn-primary col-2">Home</a>
     <br><br>
 
-    <table border="1" class="table table-striped table-responsive-md">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Budget</th>
-            <!--                <th>Delete</th>-->
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="category : ${categoriesResponse}">
-            <td th:text="${category.id}"></td>
-            <td th:text="${category.title}"></td>
-            <td th:text="${category.budget}"></td>
-            <!--                <td><a th:href="@{/categories/update/{id}(id=${category.id})}">Edit</a></td>-->
+    <div class="row">
+        <div class="col-md-2"></div>
 
-            <td th:if="${category.budget == null}"><a th:href="@{/categories/showFormForAdd/{id}(id=${category.id})}" class="btn btn-success">Add
-                Budget</a>
-                <a th:href="@{/categories/delete/{id}(id=${category.id})}" class="btn btn-danger">Delete</a>
-            </td>
-            <td th:if="${category.budget != null}"><a th:href="@{/categories/showFormForAdd/{id}(id=${category.id})}" class="btn btn-warning">Update
-                Budget</a>
-                <a th:href="@{/categories/delete/{id}(id=${category.id})}" class="btn btn-danger">Delete</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+        <div class="col-md-8">
+            <h2>Categories</h2>
+            <table border="1" class="table table-striped table-responsive-md">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Budget</th>
+                    <th>Action</th>
+                    <!--                <th>Delete</th>-->
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="category : ${categoriesResponse}">
+                    <td th:text="${category.id}"></td>
+                    <td th:text="${category.title}"></td>
+                    <td th:text="${category.budget}"></td>
+                    <!--                <td><a th:href="@{/categories/update/{id}(id=${category.id})}">Edit</a></td>-->
+
+                    <td th:if="${category.budget == null}"><a
+                            th:href="@{/categories/showFormForAdd/{id}(id=${category.id})}" class="btn btn-success">Add
+                        Budget</a>
+                        <a th:href="@{/categories/delete/{id}(id=${category.id})}" class="btn btn-danger">Delete</a>
+                    </td>
+                    <td th:if="${category.budget != null}"><a
+                            th:href="@{/categories/showFormForAdd/{id}(id=${category.id})}" class="btn btn-warning">Update
+                        Budget</a>
+                        <a th:href="@{/categories/delete/{id}(id=${category.id})}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+
     <br>
     <!--    <p><a href="/signup">Add a new user</a></p>-->
+    <div class="row">
+        <div class="col-md-3"></div>
 
-
-    <div class="form-group">
-        <form action="#" th:action="@{/categories/create}" th:object="${foo}" method="post">
-            <label for="title">Category Name:</label>
-            <input type="text" class="form-control mb-4 col-4" th:value="${title}" id="title" name="title"
-                   placeholder="Add New Category"><br>
-            <!--&lt;!&ndash;        <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>&ndash;&gt;-->
-            <div align="center">
-                <input type="submit" class="btn btn-info col-2" value="Add Category">
+        <div class="col-md-6">
+            <div class="form-group">
+                <form action="#" th:action="@{/categories/create}" th:object="${foo}" method="post">
+                    <label for="title">Category Name:</label>
+                    <input type="text" class="form-control mb-4 col-4" th:value="${title}" id="title" name="title"
+                           placeholder="Add New Category"><br>
+                    <!--&lt;!&ndash;        <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>&ndash;&gt;-->
+                    <div align="center">
+                        <input type="submit" class="btn btn-info col-2" value="Add Category">
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
+        <div class="col-md-3"></div>
     </div>
+
+
 
 </div>
 

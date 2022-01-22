@@ -4,47 +4,107 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
-<div align="center">
+<div align="center" class="container">
     <span th:if="${id == null}">
     <h1>Create Transaction</h1>
 
-    <form action="#" th:action="@{/transactions/create}" th:object="${transaction}" method="post">
+        <a th:href="@{/}" class="btn btn-primary col-2">Home</a>
+    <a th:href="@{/transactions/all}" class="btn btn-primary col-2">Back</a>
+    <br><br>
 
-        <input type="text" th:field="*{description}" placeholder="Description here">
-        <input type="text" th:field="*{amount}" placeholder="Amount Here">
-        <select th:field="*{type}">
+        <div class="row">
+        <div class="col-md-3"></div>
+
+        <div class="col-md-6">
+            <form action="#" th:action="@{/transactions/create}" th:object="${transaction}" method="post">
+
+        <div class="form-group">
+        <label for="amount">Transactions Type</label>
+            <select th:field="*{type}" class="form-control mb-4 col-4">
             <option th:value="'Income'" th:text="Income"></option>
             <option th:value="'Expense'" th:text="Expense"></option>
         </select>
-        <select th:field="*{categoryId}">
+    </div>
+
+<div class="form-group">
+    <label for="amount">Category Type</label>
+        <select th:field="*{categoryId}" class="form-control mb-4 col-4">
             <option th:each="category: ${categoriesResponse}" th:value="${category.id}" th:text="${category.title}">
             </option>
         </select>
+    </div>
 
-        <button type="submit" > Add Transaction</button>
+        <div class="form-group">
+        <label for="description">Description</label>
+            <input type="text" th:field="*{description}" id="description" placeholder="Description here"
+                   class="form-control mb-4 col-4">
+    </div>
+
+        <div class="form-group">
+        <label for="amount">Amount</label>
+            <input type="text" th:field="*{amount}" id="amount" class="form-control mb-4 col-4"
+                   placeholder="Amount Here">
+    </div>
+
+        <button type="submit" class="btn btn-info col-2"> Add Transaction</button>
     </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+
     </span>
 
     <span th:if="${id != null}">
     <h1>Update Transaction</h1>
 
-    <form action="#" th:action="@{/transactions/update/{id}(id=${id})}" th:object="${transaction}" method="post">
+        <a th:href="@{/transactions/all}" class="btn btn-primary col-2">Back</a><br><br>
 
-        <input type="text" th:field="*{description}" placeholder="Description here">
-        <input type="text" th:field="*{amount}" placeholder="Amount Here">
-        <select th:field="*{type}">
+        <div class="row">
+        <div class="col-md-3"></div>
+
+        <div class="col-md-6">
+            <form action="#" th:action="@{/transactions/update/{id}(id=${id})}" th:object="${transaction}" method="post">
+
+        <div class="form-group">
+        <label for="amount">Transactions Type</label>
+            <select th:field="*{type}" class="form-control mb-4 col-4">
             <option th:value="'Income'" th:text="Income"></option>
             <option th:value="'Expense'" th:text="Expense"></option>
         </select>
-        <select th:field="*{categoryId}">
+    </div>
+
+
+<div class="form-group">
+    <label for="amount">Category Type</label>
+        <select th:field="*{categoryId}" class="form-control mb-4 col-4">
             <option th:each="category: ${categoriesResponse}" th:value="${category.id}" th:text="${category.title}">
             </option>
         </select>
+    </div>
 
-        <button type="submit" > Add Transaction</button>
+        <div class="form-group">
+        <label for="description">Description</label>
+            <input type="text" th:field="*{description}" id="description" placeholder="Description here"
+                   class="form-control mb-4 col-4">
+    </div>
+
+        <div class="form-group">
+        <label for="amount">Amount</label>
+            <input type="text" th:field="*{amount}" id="amount" class="form-control mb-4 col-4"
+                   placeholder="Amount Here">
+    </div>
+
+        <button type="submit" class="btn btn-info col-2"> Update Transaction</button>
     </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+
     </span>
 </div>
 

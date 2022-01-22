@@ -4,18 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
-<div align="center">
+<div align="center" class="container">
     <h1>Budget Managment</h1>
+
+    <a th:href="@{/}" class="btn btn-primary col-2">Home</a>
+    <a th:href="@{/categories/all}" class="btn btn-primary col-2">Back</a>
+    <br><br>
 <form action="#" th:action="@{/budget/update}" th:object="${addbudget}" method="post">
     <input type="hidden" th:field="*{id}">
 
-    <input type="text" th:field="*{title}" disabled>
+    <div class="form-group">
+        <label for="exampletext">Category Name</label>
+        <input type="text" th:field="*{title}" class="form-control mb-4 col-4" id="exampletext" disabled>
+    </div>
+    <div class="form-group">
+        <label for="exampleamount">Budget Amount</label>
+        <input type="text" th:field="*{budget}"  class="form-control mb-4 col-4" id="exampleamount" placeholder="Add Budget Amount">
+    </div>
 
-    <input type="text" th:field="*{budget}" placeholder="Add Budget Amount">
-
-    <button type="submit" > Add Budget</button>
+    <button type="submit" class="btn btn-info col-2"> Add Budget</button>
 </form>
 </div>
 

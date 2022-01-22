@@ -14,7 +14,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String showUserList(Model model) {
-        model.addAttribute("welcome", "Finance Application");
+        model.addAttribute("welcome", " Expense Tracking Application");
         return "index";
     }
 

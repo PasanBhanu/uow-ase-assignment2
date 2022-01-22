@@ -12,6 +12,7 @@ public class Transaction {
     private String categoryName;
     private String description;
     private Double amount;
+    /// private Integer categoryTital
 
     public Transaction(DaoTransaction dao) {
         this.id = dao.getId();

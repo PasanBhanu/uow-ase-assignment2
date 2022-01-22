@@ -4,13 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
+<div align="center" class="container my-2">
 <h1 th:text="'Hi, ' + ${welcome}"></h1>
-<p>This is Working</p>
-<button type="button" class="btn btn-primary" th:onclick="window.location.href = '/categories/all'">Next</button>
-<a th:href="@{/transactions/all}"> Transactions</a>
-<a th:href="@{/budget/get}"> Progress</a>
+<!--<button type="button" class="btn btn-primary" th:onclick="window.location.href = '/categories/all'">Next</button>-->
+    <div class="row d-flex justify-content-center text-center">
+        <div class="col-4">
+            <a th:href="@{/categories/all}" class="btn btn-primary btn-lg mb-3">Categories</a>
+        </div><br>
+        <div class="col-4">
+            <a th:href="@{/transactions/all}" class="btn btn-primary btn-lg mb-3">Transactions</a>
+        </div><br>
+        <div class="col-4">
+            <a th:href="@{/budget/get}" class="btn btn-primary btn-lg mb-3">Progress Track</a>
+        </div><br>
+
+</div>
 
 
 

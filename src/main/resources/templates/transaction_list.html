@@ -26,7 +26,7 @@
         <tr th:each="transaction : ${transactionResponse}">
             <td th:text="${transaction.id}"></td>
             <td th:text="${transaction.type}"></td>
-            <td th:text="${transaction.categoryId}"></td>
+            <td th:text="${transaction.categoryName}"></td>
             <td th:text="${transaction.description}"></td>
             <td th:text="${transaction.amount}"></td>
             <!--                <td><a th:href="@{/categories/update/{id}(id=${category.id})}">Edit</a></td>-->

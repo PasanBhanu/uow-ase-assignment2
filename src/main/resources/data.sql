@@ -1,2 +1,2 @@
 DELETE FROM CATEGORIES;
-INSERT INTO CATEGORIES(TITLE)values ('Education'),('Food'),('Travel');
+INSERT INTO CATEGORIES(TITLE,BUDGET)values ('Education',200.0),('Food',300.0),('Travel', 500.0);

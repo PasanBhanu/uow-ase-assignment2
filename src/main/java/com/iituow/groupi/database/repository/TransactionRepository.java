@@ -18,9 +18,9 @@ public interface TransactionRepository extends JpaRepository<DaoTransaction, Int
     @Query(value = "SELECT SUM(AMOUNT) AS TOTAL FROM TRANSACTIONS WHERE TYPE = 2 AND CATEGORY_ID = ?1", nativeQuery = true)
     BigDecimal getTotalIncomeByCategoryId(Integer categoryId);
 
-    @Query(value = "SELECT SUM(AMOUNT) AS TOTAL FROM TRANSACTIONS WHERE TYPE = 1", nativeQuery = true)
+    @Query(value = "SELECT SUM(AMOUNT) AS TOTAL FROM TRANSACTIONS WHERE TYPE = 2", nativeQuery = true)
     BigDecimal getTotalExpense();
 
-    @Query(value = "SELECT SUM(AMOUNT) AS TOTAL FROM TRANSACTIONS WHERE TYPE = 2", nativeQuery = true)
+    @Query(value = "SELECT SUM(AMOUNT) AS TOTAL FROM TRANSACTIONS WHERE TYPE = 1", nativeQuery = true)
     BigDecimal getTotalIncome();
 }

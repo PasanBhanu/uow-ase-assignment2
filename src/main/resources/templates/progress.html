@@ -3,6 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+        $('#myId').on("change", function() {
+            var clientData = $("#myId").val();
+            $.ajax({
+                type: "GET",
+                url: "/budget/get/"+clientData,
+                success: function(response){
+                    console.log(response);
+                    $(".result").html("<label>Budget</label><p> "+response.budget+"</p>"+
+                        "<label>Total Expense</label><p> "+response.totalExpense+"</p>"+
+                        "<label>Total Income</label><p> "+response.totalIncome+"</p>");
+                },
+                error: function(error){
+                    console.log(response);
+                }
+            });
+        });
+        });
+    </script>
 </head>
 <body>
 <div align="center">
@@ -20,28 +41,13 @@
     </div>
 
     <div>
-        <form action="#" th:action="@{/budget/get/{id}(id=${ss})}" method="get">
-        <select th:value="*{ss}">
-            <option th:each="category: ${categoriesResponse}" th:value="${category.id}" th:text="${category.title}">
-            </option>
-        </select>
-            <button type="submit" > Get Data</button>
-        </form>
+            <select id="myId">
+                <option th:each="category: ${categoriesResponse}" th:value="${category.id}" th:text="${category.title}">
+                </option>
+            </select>
     </div>
 
-<!--    <span th:if="${catProgress != null}">-->
-<!--    <h4>Category View</h4>-->
-<!--    <div>-->
-<!--        <label>Budget</label>-->
-<!--        <p th:text="${catProgress.budget}"></p>-->
-
-<!--        <label>Total Expense</label>-->
-<!--        <p th:text="${catProgress.totalExpense}"></p>-->
-
-<!--        <label>Total Income</label>-->
-<!--        <p th:text="${catProgress.totalIncome}"></p>-->
-<!--    </div>-->
-<!--        </span>-->
+    <div class="result"></div>
 
 
 </div>

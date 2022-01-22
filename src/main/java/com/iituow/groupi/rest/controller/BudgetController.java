@@ -8,6 +8,7 @@ import com.iituow.groupi.service.CategoryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -31,10 +32,9 @@ public class BudgetController {
     }
 
     @GetMapping(path = "/get/{id}", produces = "application/json")
-    public String getBudget(@PathVariable Integer id, Model model) {
+    public ResponseEntity<BudgetResponse>getBudget(@PathVariable Integer id) {
         BudgetResponse budgetResponse = this.budgetService.getBudget(id);
-        model.addAttribute("catProgress", budgetResponse);
-        return "progress";
+        return ResponseEntity.ok(budgetResponse);
     }
 
     @PostMapping(path = "/update", produces = "application/json")
